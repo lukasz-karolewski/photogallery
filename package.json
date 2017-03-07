@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "predeploy": "npm build",
-    "deploy": "scp dist/* mydevil:domains/lukaszkarolewski.pl/public_html/zdjecia/"
+    "deploy": "scp dist/* mydevil:domains/zdjecia.lukaszkarolewski.pl/public_nodejs/public"
   },
   "private": true,
   "dependencies": {

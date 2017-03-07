@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from "@angular/http";
 import { Gallery } from "./gallery";
 
+import { environment } from '../environments/environment'
+
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -12,10 +14,15 @@ export class ApiService {
   constructor(private http: Http) { }
 
   getGalleries(): Promise<Gallery[]> {
-    return this.http.get(this.apiUrl)
-      .toPromise()
-      .then(response => response.json().data as Gallery[])
+
+    console.log(environment);
+
+    return Promise.resolve([])
+      .then(response => response as Gallery[])
       .catch(this.handleError);
+
+    // return this.http.get(this.apiUrl)
+    //   .toPromise()
   }
 
   private handleError(error: any): Promise<any> {
