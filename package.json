@@ -5,12 +5,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --target=production",
+    "build": "ng build --target=production --base-href /zdjecia/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "predeploy": "npm build",
-    "deploy": "scp dist/* mydevil:domains/zdjecia.lukaszkarolewski.pl/public_nodejs/public"
+    "deploy": "scp dist/* mydevil:domains/lukaszkarolewski.pl/public_html/zdjecia/ && scp api.php mydevil:domains/lukaszkarolewski.pl/public_html/zdjecia/"
   },
   "private": true,
   "dependencies": {

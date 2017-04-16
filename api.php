@@ -10,8 +10,11 @@ class Gallery{
 $path = '.';
 $galleries = array();
 
-foreach(new DirectoryIterator($path) as $file) {
+function cmp($a, $b){
+    return strcmp($b->date, $a->date);
+}
 
+foreach(new DirectoryIterator($path) as $file) {
         if($file->isDot()) continue;
 
         if($file->isDir()) {
@@ -26,6 +29,7 @@ foreach(new DirectoryIterator($path) as $file) {
         }
 }
 
+usort($galleries, "cmp");
 echo json_encode($galleries);
 
 ?>
