@@ -1,12 +1,11 @@
-<h1>
-  {{title}}
-
-  <ul class="galleries">
-    <li class="gallery" *ngFor="let item of this.galleries"><a href="{{item.url}}">
-      <div class="title">
-        {{item.date}}
-      </div>
-      {{item.name}}
-    </a></li>
-  </ul>
-</h1>
+<div class="search">
+  <input [(ngModel)]="search" (keyup)="onSearch()" placeholder="Szukaj">
+</div>
+<ul class="galleries">
+  <li class="gallery" *ngFor="let item of this.galleries"><a href="{{item.url}}">
+    <div class="title">
+      {{item.date}}
+    </div>
+    {{item.name}}
+  </a></li>
+</ul>

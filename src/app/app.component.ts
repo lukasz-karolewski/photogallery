@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ApiService} from './api.service';
 import {Gallery} from './model/gallery';
 
@@ -8,7 +8,8 @@ import {Gallery} from './model/gallery';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Zdjecia';
+  @Input() search = '';
+  originalGalleries: Gallery[];
   galleries: Gallery[];
 
   constructor(private api: ApiService) {
@@ -18,7 +19,13 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.api.getGalleries()
       .then((galleries) => {
-        this.galleries = galleries;
+        this.galleries = this.originalGalleries = galleries;
       });
+  }
+
+  onSearch(): void {
+    if (this.originalGalleries) {
+      this.galleries = this.originalGalleries.filter((gallery) => gallery.name.toLowerCase().includes(this.search.toLowerCase()) || gallery.date.includes(this.search));
+    }
   }
 }
